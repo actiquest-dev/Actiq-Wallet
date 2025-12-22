@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #fff;
+  --color: #000000;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #1a1a1a;
+    --color: #ffffff;
+  }
+}
+
+body {
+  color: var(--color);
+  background: var(--background);
+}
+
+.cardFlip {
+  animation: 1s ease-in flip;
+
+}
+
+.sideOne {
+  max-height: 500px;
+  overflow: hidden;
+  transition: max-height ease-in 0.515s;
+}
+
+.cardFlip .sideOne {
+  max-height: 1px;
+  overflow: hidden;
+  transition: max-height ease-in 0.15s;
+}
+
+.sideTwo {
+  max-height: 1px;
+  overflow: hidden;
+  transition: max-height ease-in 0.15s;
+}
+
+.cardFlip .sideTwo {
+  max-height: 500px;
+  overflow: hidden;
+  transition: max-height ease-in 0.515s;
+}
+
+@keyframes flip {
+  from {
+    transform: skew(0);
+  }
+  25% {
+    transform: skew(5deg,5deg);
+  }
+  50% {
+    transform: skew(-5deg,-5deg) scale(.95);
+
+  }
+  75% {
+    transform: skew(0) scale(1.05);
+  }
+  to {
+    transform: skew(0) scale(1);
+  }
+}
+
+@keyframes flipOld {
+  from {
+    transform: rotate3d(0,0,0,0deg);
+  }
+  25% {
+    transform: rotate3d(1,0,0,90deg);
+  }
+  50% {
+    transform: rotate3d(1,0,0,180deg);
+  }
+  75% {
+    transform: rotate3d(1,0,0,270deg);
+  }
+  to {
+    transform: rotate3d(1,0,0,360deg);
+  }
+}
+
+.cardFlipIn {
+  animation: 1s ease-in flipIn;
+
+}
+
+@keyframes flipIn {
+  from {
+    transform: rotate3d(0,0,0,0deg);
+  }
+  to {
+    transform: rotate3d(1,0,0,180deg);
+  }
+}
+
+.cardFlipOut {
+  animation: 1s ease-out flipOut;
+
+}
+
+@keyframes flipOut {
+  from {
+    transform: rotate3d(0,0,0,180deg);
+  }
+  to {
+    transform: rotate3d(1,0,0,360deg);
+  }
+}
+
